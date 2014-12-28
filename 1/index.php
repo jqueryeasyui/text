@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <head>
-<title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
+<title>love</title>
 <link href="css/bootstrap.css" rel="stylesheet">
 <style type='text/css'>
     body {
@@ -24,11 +23,11 @@
 </head>
 <body>
   <div class='container'>
-    <h1>TWITTER BOOTSTRAP TUTORIAL</h1>
+    <h1>两块钱的故事</h1>
     <div class='navbar navbar-inverse'>
       <div class='navbar-inner nav-collapse' style="height: auto;">
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">首页</a></li>
           <li><a href="#">Page One</a></li>
           <li><a href="#">Page Two</a></li>
         </ul>
