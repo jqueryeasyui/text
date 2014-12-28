@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
 <title>Twitter Bootstrap Tutorial - A responsive layout tutorial</title>
-<link href="css/bootstrapcss" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 <style type='text/css'>
     body {
       background-color: #CCC;
