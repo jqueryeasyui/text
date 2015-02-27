@@ -256,7 +256,7 @@ class Mysql{
 
 //使用。。。
 //创造数据库操作对象
-$dbObj = new Mysql(SAE_MYSQL_HOST_M,SAE_MYSQL_USER,SAE_MYSQL_PASS,SAE_MYSQL_DB);
+$dbObj = new Mysql('iguan.sinaapp.com','4ykz0wym44','w32x23l2z32iz1mm0i2i53x5l004i3ihjjm4lx1h','app_iguan');
 
 //操作管理员表
  
