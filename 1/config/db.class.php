@@ -218,7 +218,7 @@ class Mysql{
 	 * @param int/bool $echoSql 是否直接输出SQL语句并中止程序
 	 * @return resource 资源集（或者叫结果集
 	 */
-	private function query($sql, $conn, $debug = 0, $echoSql = 0){
+	private function query($sql, $conn, $debug = 1, $echoSql = 0){
 	
 		if($echoSql){exit($sql);}
 		
