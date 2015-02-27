@@ -1,2 +1,4 @@
 name: iguan
 version: 1
+handle:
+- directoryindex:  main.html 
