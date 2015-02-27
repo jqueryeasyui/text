@@ -218,7 +218,7 @@ class Mysql{
 	 * @param int/bool $echoSql 是否直接输出SQL语句并中止程序
 	 * @return resource 资源集（或者叫结果集
 	 */
-	private function query($sql, $conn, $debug = 1, $echoSql = 0){
+	private function query($sql, $conn, $debug = 1, $echoSql = 1){
 	
 		if($echoSql){exit($sql);}
 		
@@ -241,7 +241,7 @@ class Mysql{
 				exit();
 			}else	//运营阶段，出错时要报 忽悠信息
 			{
-				exit('由于系统繁忙，操作失败了，请联系管理员或稍候再试');
+				exit('由于系统繁忙，操作失败了，请联系管理员或稍e候再试');
 			}
 		}	
 		return $rs;
