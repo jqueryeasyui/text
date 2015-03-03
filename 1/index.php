@@ -20,9 +20,13 @@ define('APP_DEBUG',True);
 
 // 定义应用目录
 define('APP_PATH','./www/');
+//前台目录
 
+define('APP_PATH', './www/');
+
+define('IGUAN_PATH','./ThinkPHP');
 // 引入ThinkPHP入口文件
-require './ThinkPHP/ThinkPHP.php';
+require 'http://1.iguan.sinaapp.com/ThinkPHP/ThinkPHP.php';
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单
 
