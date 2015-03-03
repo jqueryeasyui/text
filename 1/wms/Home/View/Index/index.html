@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery easdddyui</title>
+<script type="text/javascript" src="__PUBLIC__/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/jquery.easyui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/themes/bootstrap/easyui.css">
+<script type="text/javascript" src="__PUBLIC__/locale/easyui-lang-zh_CN.js"></script>
+ 
+
+</head>
+
+<body>
+<script>
+$('#pg').propertygrid({
+    url: 'admin.php?c=index&a=main',
+    method: 'post',
+    columns: [[{
+        field: 'id',
+        width: 30
+	    }, {
+	        field: 'name',
+	        width: 200
+	    }, {
+	        field: 'value',
+	        width: 0
+	    }]],
+    showGroup: true,
+    nowrap: false,
+    showHeader: false,
+    scrollbarSize: 0
+});
+</script>
+<table fit="true" id='pg'> </table>
+
+<script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+</body>
+
+</html>
