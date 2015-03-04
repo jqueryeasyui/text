@@ -8,7 +8,6 @@ class MemberController extends Controller {
     public function memberList(){
     	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
-		
 		$User = M("users");
 		$userCount = $User->count();//获取记录的总数
 		$offset = ($page-1)*$rows;
