@@ -22,7 +22,7 @@
 			data-options="fit:true,striped: true,rownumbers:true,pagination:true,url:'admin.php?c=member&a=memberList',pageSize:10,pageList:[10, 20, 30, 40, 50],method:'post',toolbar:'#tb',footer:'#ft'" fitcolumns="true">
             <thead>
                 <tr>
-                	<th data-options="field:'',checkbox:true"></th>
+                	<th data-options="field:'ck',checkbox:true"></th>
                     <th data-options="field:'user_id',width:50"  >
                                                                   编号
                     </th>
@@ -67,7 +67,30 @@
 							}); 
 					    },   
 					    prompt:'请输入关键字'  
-					});  
+					}); 
+					 function gridTableEdit(openType){
+						 switch(openType){
+							case 'edit':
+								var ids = [];
+								var rows = $('#dg').datagrid('getSelections');
+								for(var i=0; i<rows.length; i++){
+									ids.push(rows[i].user_id);
+								}
+								open1('admin.php?c=member&a=memberEdit&id='+ids,'会员编辑');
+							break;
+							case 'copy':
+								var ids = [];
+								var rows = $('#dg').datagrid('getSelections');
+								for(var i=0; i<rows.length; i++){
+									ids.push(rows[i].id);
+								}
+								open1('admin.php?c=member&a=memberEdit&id='+ids,'会员编辑');
+							break;
+							default:
+								return open1('form.html','222编辑');
+							break;
+						}
+					} 
 				</script>  
             <input id="search"></input>
 			 

@@ -17,6 +17,10 @@ class MemberController extends Controller {
 		echo json_encode($result);
     }
     public function memberEdit(){
-    	
+    	$user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    	$User = M("users");
+    	$users = $User->where("user_id=$user_id")->find();
+    	$this->assign('users',$users);
+    	$this->display('edit');//输出页面模板
     }
 }
