@@ -23,29 +23,7 @@
     });
 });
  
- function gridTableEdit(openType){
-	 switch(openType){
-		case 'edit':
-			var ids = [];
-			var rows = $('#dg').datagrid('getSelections');
-			for(var i=0; i<rows.length; i++){
-				ids.push(rows[i].id);
-			}
-			open1('edit.php?id='+ids,'php编辑');
-		break;
-		case 'copy':
-			var ids = [];
-			var rows = $('#dg').datagrid('getSelections');
-			for(var i=0; i<rows.length; i++){
-				ids.push(rows[i].id);
-			}
-			open1('edit.php?id='+ids,'php编辑');
-		break;
-		default:
-			return open1('form.html','222编辑');
-		break;
-	}
-}
+
  var formater={
 		 image:function(val,row){
 				image='<img src="'+row.pic+'" width="70px" height="60px"/>';
