@@ -16,4 +16,7 @@ class MemberController extends Controller {
 		$result['rows'] = $res;
 		echo json_encode($result);
     }
+    public function memberEdit(){
+    	
+    }
 }
