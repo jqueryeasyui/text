@@ -32,10 +32,9 @@
 			$.ajax({
 				type:"get",
 				dataType:"json",
-				url:"admin.php?c=member&a=region",
+				url:"admin.php?c=index&a=region",
 				data:"type_id="+pid+"&region_id="+rid,
 				success:function(result){
-
 					if(pid==1)
 					var option = '<option value="">请选择省份</option>';
 					else if(pid==2)
@@ -99,17 +98,17 @@
 		});
     	</script>
     	<form id="ff" class="easyui-form"  method="post" data-options="novalidate:true">
-          <table cellpadding="5">
+          <table cellpadding="6">
           	<tr >
             	<td align="right">用户名:</td>
                 <td>
-                   	<input value="{$users.user_name}" class="easyui-textbox" type="text" name="name" style="width:100%;height:30px;font-size: 16px;" data-options="required:true"></input>
+                   	<input value="{$users.user_name}" class="easyui-textbox" type="text" name="user_name" style="width:100%;height:30px;font-size: 16px;" data-options="required:true"></input>
                 </td>
             </tr>
           	<tr >
             	<td align="right">昵称:</td>
                 <td>
-                   	<input value="{$users.nick_name}" class="easyui-textbox" type="text" name="name" style="width:100%;height:30px;font-size: 16px;" data-options="required:true"></input>
+                   	<input value="{$users.nick_name}" class="easyui-textbox" type="text" name="nick_name" style="width:100%;height:30px;font-size: 16px;" data-options="required:true"></input>
                 </td>
             </tr>
             <tr>
@@ -121,7 +120,7 @@
             <tr>
                 <td align="right"> mobile:</td>
                 <td>
-                    <input value="{$users.mobile}"  class="easyui-textbox" type="text" name="subject" data-options="required:true">
+                    <input value="{$users.mobile}"  class="easyui-textbox" type="text" name="mobile" data-options="required:true">
                     </input>
                 </td>
             </tr>
@@ -134,17 +133,23 @@
             <tr>
                 <td align="right"> 所在地: </td>
                 <td>
-                	<select class="combobox" name="province" id="province" rel="">
+                	<select class="select" name="province" id="province" rel="{$users.province}">
 		            <option>请选择省份</option>
 			        </select>
-			        <select class="select" name="city" id="city" rel="">
+			        <select class="select" name="city" id="city" rel="{$users.city}">
 			            <option>请选择城市</option>
 			        </select>
-			        <select class="select" name="district" id="district" rel="">
+			        <select class="select" name="district" id="district" rel="{$users.district}">
 			            <option>请选择地区</option>
 			        </select>
 					<input name="region" type="hidden" id="region"/>
                </td>
+            </tr>
+			<tr>
+                <td align="right">详细地址</td>
+                <td>
+                    <input value="{$users.address}" class="easyui-textbox" type="text" name="address" style="width:100%;height:30px;font-size: 16px;" data-options="required:true"></input>
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -162,7 +167,7 @@
         		   </div>
                 </td>
             </tr>
-            	<input type="hidden" name ="editID" id="editID" value="<?php echo $_GET['id']?>" />   
+            	<input type="hidden" name ="user_id" id="user_id" value="{$users.user_id}" />   
         	<tr>
             <td>
             </td>
@@ -181,7 +186,7 @@
         function submitForm(){
         	$.messager.progress();
             $('#ff').form('submit', {
-            	url: 'new.php?act=edit',
+            	url: 'admin.php?c=member&a=memberSave',
                 onSubmit: function(){
                 },
             	success: function(data){
@@ -190,7 +195,7 @@
 	     	        	$.messager.progress('close');	// 当成功提交之后隐藏进度条  
 	     	        	alert(data.message);
 		     	        $('#dg').datagrid('reload');   
-	     	        	$('#tt').tabs('close','php编辑');
+	     	        	$('#tt').tabs('close','会员编辑');
 	     	        } 
             	}
             });
