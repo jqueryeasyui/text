@@ -23,14 +23,35 @@ class MemberController extends Controller {
     	$this->assign('users',$users);
     	$this->display('edit');//输出页面模板
     }
-    public function region(){
-    	$region_id = !empty($_GET['region_id'])?trim($_GET['region_id']):1;
-    	$type_id = !empty($_GET['type_id'])?trim($_GET['type_id']):1;
-    	header('Content-type: text/html; charset=utf8');
-    	$region = M("region");
-    	$result = $region->where("region_type = '$type_id' AND parent_id = '$region_id'")->select();
-    	echo json_encode($result);
-    	exit;
+    public function memberSave(){
+    	$user_name 	= !empty($_REQUEST['user_name']) ? $_REQUEST['user_name'] : '';
+    	$nick_name 	= !empty($_REQUEST['nick_name']) ? trim($_REQUEST['nick_name']) : '';
+    	$email 		= !empty($_REQUEST['email']) ? trim($_REQUEST['email']) : '';
+    	$mobile 	= !empty($_REQUEST['mobile']) ? trim($_REQUEST['mobile']) : '';
+    	$birthday   = !empty($_REQUEST['birthday']) ? $_REQUEST['birthday'] : '';
+    	$user_id 	= !empty($_REQUEST['user_id']) ? trim($_REQUEST['user_id']) : '';
+    	$province 	= !empty($_REQUEST['province']) ? trim($_REQUEST['province']) : '';//省份
+    	$city 		= !empty($_REQUEST['city']) ? trim($_REQUEST['city']) : '';//城市
+    	$district 	= !empty($_REQUEST['district']) ? trim($_REQUEST['district']) : '';//地区
+    	$region 	= !empty($_REQUEST['region']) ? trim($_REQUEST['region']) : '';//合并在一起的地址
+    	$address 	= !empty($_REQUEST['address']) ? trim($_REQUEST['address']) : '';//详细地址
+    	$update = array(
+    		'user_name' => $user_name,
+    		'nick_name' => $nick_name,
+    		'email' 	=> $email,
+        	'birthday'  => $birthday,
+        	'province'  => $province,
+        	'city'  	=> $city,
+        	'district'  => $district,
+        	'region'    => $region,
+        	'address'   => $address,
+    		'mobile' 	=> $mobile
+    	);
+    	$User = M("users"); // 实例化User对象
+    	$update_id = $User->where("user_id=$user_id")->save($update); // 根据条件保存修改的数据
+    	$result['success'] = $update_id;
+    	$result['message'] = '数据已经更新.';
+   		echo json_encode($result);
     }
     
 }
