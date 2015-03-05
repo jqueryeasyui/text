@@ -23,4 +23,14 @@ class MemberController extends Controller {
     	$this->assign('users',$users);
     	$this->display('edit');//输出页面模板
     }
+    public function region(){
+    	$region_id = !empty($_GET['region_id'])?trim($_GET['region_id']):1;
+    	$type_id = !empty($_GET['type_id'])?trim($_GET['type_id']):1;
+    	header('Content-type: text/html; charset=utf8');
+    	$region = M("region");
+    	$result = $region->where("region_type = '$type_id' AND parent_id = '$region_id'")->select();
+    	echo json_encode($result);
+    	exit;
+    }
+    
 }
