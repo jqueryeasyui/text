@@ -7,6 +7,9 @@
 .icon-edit{
 	background:url('icons/pencil.png') no-repeat center center;
 }
+.icon-copy{
+	background:url('icons/copy.png') no-repeat center center;
+}
 .icon-clear{
 	background:url('icons/clear.png') no-repeat center center;
 }
