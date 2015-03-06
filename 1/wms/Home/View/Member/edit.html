@@ -97,7 +97,7 @@
 			$("#region").val(region);
 		});
     	</script>
-    	<form id="ff" class="easyui-form"  method="post" data-options="novalidate:true">
+    	<form id="ff" class="easyui-form"  enctype="multipart/form-data"  method="post" data-options="novalidate:true">
           <table cellpadding="6">
           	<tr >
             	<td align="right">用户名:</td>
@@ -156,14 +156,14 @@
                      	 头像修改:
                 </td>
                 <td>
-                    <input id="idFile" style="width:224px" runat="server" name="pic" onchange="javascript:setImagePreview(this,localImag,preview);" type="file" />
+                    <input id="idFile" style="width:224px" runat="server" name="photo" onchange="javascript:setImagePreview(this,localImag,preview);" type="file" />
                 </td>
             </tr>
             <tr>
                 <td align="right"> 预　　览:</td>
                 <td>
                    <div id="localImag">
-            			<img id="preview" alt="预览图片" onclick="over(preview,divImage,imgbig);" src="__PUBLIC__/img/pview.gif" style="width: 200px; height: 150px;"/>
+            			<img id="preview" alt="预览图片" onclick="over(preview,divImage,imgbig);"  src="__PUBLIC__/img/pview.gif" style="width: 200px; height: 150px;"/>
         		   </div>
                 </td>
             </tr>
@@ -184,7 +184,7 @@
     </div>
     <script>
         function submitForm(){
-        	$.messager.progress();
+        	//$.messager.progress();
             $('#ff').form('submit', {
             	url: 'admin.php?c=member&a=memberSave',
                 onSubmit: function(){
