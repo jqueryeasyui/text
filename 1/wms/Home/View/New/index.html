@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>main</title>
+        <script type="text/javascript" src="__PUBLIC__/jquery.min.js"> </script>
+        <script type="text/javascript" src="__PUBLIC__/jquery.easyui.min.js"> </script>
+		
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/themes/icon.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/themes/bootstrap/easyui.css">
+    	<script type="text/javascript" src="__PUBLIC__/locale/easyui-lang-zh_CN.js"> </script>
+		<script type="text/javascript" src="__PUBLIC__/js/main.js"> </script>
+		
+		 <script type="text/javascript" src="__PUBLIC__/js/editor/kindeditor.js"> </script>
+		 <script>
+		    var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="KindEditor"]', {
+							allowFileManager : true
+						});
+					});
+		
+		  </script>
+	</head>
+
+<body>
+	   <div class="easyui-layout" style="width:700px;height:350px;" data-options="fit:true">
+        <div id="p" data-options="region:'west'" title="新闻资讯" style="width:20%;padding:10px">
+         <ul class="easyui-tree">
+                <li iconCls="icon-base">
+                    <span>新闻资讯</span>
+                    <ul>
+                        <li iconCls="icon-gears">
+                            <a class="e-link" href="#" onclick="showNew(1)">首页</a>
+                        </li>
+                        <li iconCls="icon-gears">
+                            <a class="e-link" href="#" onclick="showNew(2)">main</a>
+                        </li>
+                        <li iconCls="icon-gears">
+                            <a class="e-link" href="#" onclick="showNew(3)">新闻资讯</a>
+                        </li>
+                        <li iconCls="icon-gears">
+                            <a class="e-link" href="#" onclick="showNew(4)">编辑器</a>
+                        </li>
+                        <li iconCls="icon-gears">
+                            <a class="e-link" href="#" onclick="showNew(5)">resizable</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div data-options="region:'center'" title="内容管理">
+	        
+        <table id="dg" class="easyui-datagrid"  sortName="itemid" sortOrder="asc"
+            title="" style="width:700px;height:150px"
+			data-options="fit:true,striped: true,rownumbers:true,pagination:true,url:'admin.php?c=new&a=newList',pageSize:10,pageList:[10, 20, 30, 40, 50],method:'post',toolbar:'#tb',footer:'#ft'" fitcolumns="true">
+            <thead>
+                <tr>
+                	<th data-options="field:'ck',checkbox:true"></th>
+                    <th data-options="field:'id',width:80"  >
+                        Item ID
+                    </th>
+                    <th data-options="field:'title',width:100">
+                        Product
+                    </th>
+                    <th data-options="field:'listprice',width:80,align:'right'">
+                        List Price
+                    </th>
+                    <th data-options="field:'unitcost',width:80,align:'right'">
+                        Unit Cost
+                    </th>
+                    <th data-options="field:'pic',width:240" formatter="formater.image">
+                        Attribute
+                    </th>
+                    <th data-options="field:'status',width:60,align:'center'">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div id="tb" style="padding:5px 10px;">
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onClick="newEdit('add')">添加</a>
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onClick="newEdit('newEdit')">编辑</a>
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onClick="newEdit('copy')">保存</a>
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true">剪切</a>
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+				<script type="text/javascript">
+					function showNew(id){
+						$('#dg').datagrid('load',{
+								id: id
+						}); 
+					}  
+				   $('#search').searchbox({
+				   		width:300,   
+					    searcher:function(value,name){   
+							$('#dg').datagrid('load',{
+								title: value
+							}); 
+					    },   
+					    prompt:'请输入关键字'  
+					});
+					 function newEdit(openType){
+						 switch(openType){
+							case 'newEdit':
+								var ids = [];
+								var rows = $('#dg').datagrid('getSelections');
+								for(var i=0; i<rows.length; i++){
+									ids.push(rows[i].id);
+								}
+								open1('admin.php?c=new&a=newEdit&id='+ids,'新闻编辑');
+							break;
+							case 'copy':
+								var ids = [];
+								var rows = $('#dg').datagrid('getSelections');
+								for(var i=0; i<rows.length; i++){
+									ids.push(rows[i].id);
+								}
+								open1('admin.php?c=new&a=newEdit&id='+ids,'新闻编辑');
+							break;
+							default:
+								return open1('form.html','222编辑');
+							break;
+						}
+					}  
+				</script>  
+            <input id="search"></input>
+			 
+        </div>
+    
+        </div>
+    </div>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"> </script>
+</body>
+</html>
