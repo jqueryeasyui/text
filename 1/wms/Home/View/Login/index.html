@@ -28,7 +28,9 @@
 				<tr>
 	    			<td></td>
 	    			<td>
-	    				<img width="30%"  height="50" alt="验证码" src="admin.php?c=login&a=verify_c" title="点击刷新">  
+	    				<div id="captcha-container">
+	    					<img width="80%"  height="50" alt="验证码" src="admin.php?c=login&a=verify_c" title="点击刷新">  
+						</div>
 					</td>
 	    		</tr>
 	    	</table>
@@ -45,21 +47,29 @@
 		</table>
 	</div>
 	<script>
+    var captcha_img = $('#captcha-container').find('img')
+    var verifyimg = captcha_img.attr("src");
+    captcha_img.attr('title', '点击刷新');
+    captcha_img.click(function(){
+        if (verifyimg.indexOf('?') > 0) {
+            $(this).attr("src", verifyimg + '&random=' + Math.random());
+        }
+        else {
+            $(this).attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+        }
+    });  
 		function LoginForm(){
-			$.messager.progress();
+			//$.messager.progress();
             $('#loginForm').form('submit', {
-            	url: 'new.php?act=login',
+            	url: 'admin.php?c=login&a=checkLogin',
                 onSubmit: function(){
-					//return $(this).form('enableValidation').form('validate');
                 },
             	success: function(data){
            		 	var data = eval('(' + data + ')');  // change the JSON string to javascript object   
 	     	        if (data.success){
-	     	        	$.messager.progress('close');	// 当成功提交之后隐藏进度条 
 	     	        	alert(data.message);
 						location.href = data.url;
 	     	        }else{
-						$.messager.progress('close');	// 当成功提交之后隐藏进度条 
 	     	        	alert(data.message);
 						location.href = data.url;
 					} 
