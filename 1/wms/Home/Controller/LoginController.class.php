@@ -19,7 +19,8 @@ class LoginController extends Controller {
 		 }
 		 $User = M("users");
 		 $users = $User->where("user_name='{$user_name}' AND password = '{$password}'")->find();
-		 $userSession = $_SESSION[$users];
+		 session('user_id',$users['user_id']);
+		 session('user_name',$users['user_name']);
     	if(!empty($users)){
     		$result['success'] = 1;
     		$result['message'] = '欢迎进入信息管理系统';
