@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户登录</title>
+     	<include file="Public/html/header.html" />
+	</head>
+
+    <body>
+	<div id="dd" iconCls="icon-man" class="easyui-dialog" title="管理员登录" style="width:500px;height:350px;padding:68px 0px 0px 120px"
+		buttons="#dlg-buttons" maximizable="true" resizable="true">
+		<form id="loginForm" class="easyui-form" method="post" data-options="novalidate:true">
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>用户名:</td>
+	    			<td><input class="easyui-textbox" type="text" name="user_name" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>密码:</td>
+	    			<td><input class="easyui-textbox" type="password" name="password" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>验证码:</td>
+	    			<td>
+						  <input name="verify" width="50%"  class="easyui-textbox"  type="text"><br/>                  
+					</td>
+	    		</tr>
+				<tr>
+	    			<td></td>
+	    			<td>
+	    				<img width="30%"  height="50" alt="验证码" src="admin.php?c=login&a=verify_c" title="点击刷新">  
+					</td>
+	    		</tr>
+	    	</table>
+		</form>
+	</div>
+	<div id="dlg-buttons">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td style="text-align:right">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-man" onclick="LoginForm()">登录</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="javascript:$('#dd').dialog('close')">退出</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<script>
+		function LoginForm(){
+			$.messager.progress();
+            $('#loginForm').form('submit', {
+            	url: 'new.php?act=login',
+                onSubmit: function(){
+					//return $(this).form('enableValidation').form('validate');
+                },
+            	success: function(data){
+           		 	var data = eval('(' + data + ')');  // change the JSON string to javascript object   
+	     	        if (data.success){
+	     	        	$.messager.progress('close');	// 当成功提交之后隐藏进度条 
+	     	        	alert(data.message);
+						location.href = data.url;
+	     	        }else{
+						$.messager.progress('close');	// 当成功提交之后隐藏进度条 
+	     	        	alert(data.message);
+						location.href = data.url;
+					} 
+            	}
+            });
+		}
+	</script>
+    </body>
+    </html>
