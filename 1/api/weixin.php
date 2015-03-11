@@ -46,7 +46,7 @@ class wechatCallbackapiTest
 		        {
 		            $msgType = "text";
 		
-		            if($keyword=="你好"){
+		            if($keyword=="你好"){ 
 		                $contentStr = "hello";
 		            }elseif($keyword=="苏州"){
 		                $contentStr = "上有天堂，下有苏杭";
