@@ -43,14 +43,21 @@ class wechatCallbackapiTest
 							<FuncFlag>0</FuncFlag>
 							</xml>";             
 				if(!empty( $keyword ))
-                {
-              		$msgType = "text";
-                	$contentStr = "Welcome to wechat world!";
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                	echo $resultStr;
-                }else{
-                	echo "Input something...";
-                }
+		        {
+		            $msgType = "text";
+		
+		            if($keyword=="你好"){
+		                $contentStr = "hello";
+		            }elseif($keyword=="苏州"){
+		                $contentStr = "上有天堂，下有苏杭";
+		            }else{
+		                $contentStr = "感谢您关注【卓锦苏州】 微信号：zhuojinsz";
+		            }
+		            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+		            echo $resultStr;
+		        }else{
+		            echo "Input something...";
+		        }
 
         }else {
         	echo "";
