@@ -3,6 +3,11 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
+    	
+    	if(!session("?user_name")){
+    		$this->error('您还没有登录', 'admin.php?c=login&a=index');
+    		exit;
+    	}
     	$user_name = session('user_name');
     	$this->assign('user_name',$user_name);
     	$this->display('main');//输出页面模板
