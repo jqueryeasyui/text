@@ -14,8 +14,8 @@ class LoginController extends Controller {
 		 if(!$Verify->check($_POST['verify'],'1')){
 		    $result['success'] = 0;
     		$result['message'] = '输入的验证码不对';
-    		$result['url']	   ='';
-    		echo json_encode($result);
+    		$result['url']	   ='admin.php?c=login&a=index';
+    		exit(json_encode($result)) ;
 		 }
 		 $User = M("users");
 		 $users = $User->where("user_name='{$user_name}' AND password = '{$password}'")->find();
@@ -31,7 +31,7 @@ class LoginController extends Controller {
     		$result['url']	   ='admin.php?c=login&a=index';
     	}
     	
-    	echo json_encode($result);
+    	exit(json_encode($result));
     }
     public function verify_c(){
     	$Verify = new \Think\Verify();
@@ -43,5 +43,13 @@ class LoginController extends Controller {
     	$Verify->imageH = 34;
     	//$Verify->expire = 600;
     	$Verify->entry(1);
+    }
+    public function loginOut(){
+    	session('user_name',null); // 删除name
+    	if(!session("?user_name")){
+    		$this->success('退出成功', 'admin.php?c=login&a=index');
+    	} else {
+    		$this->error('退出失败');
+    	}
     }
 }
