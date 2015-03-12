@@ -68,7 +68,7 @@ class wechatCallbackapiTest
                 echo $resultStr;
             }
         }else{
-            echo "";
+            echo "请输入正确的字符或文字";
             exit;
         }
     }
