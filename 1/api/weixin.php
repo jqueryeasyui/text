@@ -66,9 +66,14 @@ class wechatCallbackapiTest
                 $contentStr = date("Y-m-d H:i:s",time());
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
+            }else{
+            	$msgType = "text";
+            	$contentStr = "请输入正确的字符或文字";
+            	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            	echo $resultStr;
             }
         }else{
-            echo "请输入正确的字符或文字";
+            echo "";
             exit;
         }
     }
