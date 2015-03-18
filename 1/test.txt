@@ -3,7 +3,7 @@
 
 git 客户端中的 Uncomitted changes Hide (在未提交的代码)
 
-git Sync(未同步到代码库的代码)
+git Sync(未同步到代码库的代码)（也可以从github中下载下来的。）
 
 clone更新到本地
  
