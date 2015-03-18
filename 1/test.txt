@@ -1,6 +1,6 @@
 ﻿git pull 更新代码库的代码 
 
-git 客户端中的 Uncomitted changes Hide (未提交的代码)
+git 客户端中的 Uncomitted changes Hide (要未提交的代码)
 
-git Sync(未同步到代码库的代码)
+git Sync(未同步到代码库的代码) 
  
