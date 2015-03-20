@@ -16,3 +16,4 @@ clone更新到本地
 5、遇到冲突时搞明白冲突的原因，千万不要随意丢弃别人的代码
 6、产品发布后，记得打tag，方便以后拉分支修bug。
 DDDDDDDDDDDDDDDDDDDDDDDD
+测试不同代码
